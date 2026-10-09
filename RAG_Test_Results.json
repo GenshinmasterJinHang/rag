@@ -1,0 +1,433 @@
+{
+  "model": "qwen3:0.6b",
+  "embedding_model": "nomic-embed-text",
+  "policy_records": 1196,
+  "results": [
+    {
+      "mode": "rag",
+      "case": "missing_phone",
+      "question": "What exact phone number should I call for the University IT Service Desk?",
+      "answer": "The requested information is not specified in the documentation.",
+      "passed": true,
+      "sources": [
+        {
+          "topic": "vpn",
+          "policy_id": "doc-1180",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "topic": "vpn",
+          "policy_id": "doc-0023",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "vpn",
+          "policy_id": "doc-0646"
+        },
+        {
+          "topic": "email",
+          "policy_id": "doc-0785",
+          "source": "university_it_policies.txt"
+        }
+      ]
+    },
+    {
+      "mode": "rag",
+      "case": "phone_paraphrase",
+      "question": "Please give me the IT help desk's telephone number.",
+      "answer": "The requested information is not specified in the documentation.",
+      "passed": true,
+      "sources": [
+        {
+          "source": "university_it_policies.txt",
+          "policy_id": "doc-0365",
+          "topic": "email"
+        },
+        {
+          "topic": "email",
+          "source": "university_it_policies.txt",
+          "policy_id": "doc-0801"
+        },
+        {
+          "topic": "vpn",
+          "policy_id": "doc-0646",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "email",
+          "policy_id": "doc-1160"
+        }
+      ]
+    },
+    {
+      "mode": "rag",
+      "case": "printing",
+      "question": "How long are unreleased print jobs retained?",
+      "answer": "Unreleased print jobs are automatically deleted after 24 hours.",
+      "passed": true,
+      "sources": [
+        {
+          "topic": "printing",
+          "source": "university_it_policies.txt",
+          "policy_id": "doc-0041"
+        },
+        {
+          "topic": "printing",
+          "policy_id": "doc-1192",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "printing",
+          "policy_id": "doc-0645"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "printing",
+          "policy_id": "doc-0386"
+        }
+      ]
+    },
+    {
+      "mode": "rag",
+      "case": "guest_wifi",
+      "question": "Which Wi-Fi network should visitors use?",
+      "answer": "Campus-Guest should be used by visitors.",
+      "passed": true,
+      "sources": [
+        {
+          "topic": "wifi",
+          "policy_id": "doc-0068",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "topic": "wifi",
+          "policy_id": "doc-0258",
+          "source": "university_it_policies.txt"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "wifi",
+          "policy_id": "doc-0944"
+        },
+        {
+          "source": "university_it_policies.txt",
+          "topic": "wifi",
+          "policy_id": "doc-1166"
+        }
+      ]
+    },
+    {
+      "mode": "agent",
+      "case": "missing_phone",
+      "question": "What exact phone number should I call for the University IT Service Desk?",
+      "answer": "I do not know because it is not specified in the supplied documentation.",
+      "passed": true,
+      "trace": [
+        {
+          "content": "What exact phone number should I call for the University IT Service Desk?",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "name": null,
+          "id": "d2343a95-9bef-4f7d-84c4-65c8625b1f81"
+        },
+        {
+          "content": "",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "ai",
+          "name": null,
+          "id": "94b78515-c4e8-4d4e-81d5-70315fd18faa",
+          "tool_calls": [
+            {
+              "name": "search_university_knowledge",
+              "args": {
+                "question": "What exact phone number should I call for the University IT Service Desk?"
+              },
+              "id": "initial_policy_search",
+              "type": "tool_call"
+            }
+          ],
+          "invalid_tool_calls": [],
+          "usage_metadata": null
+        },
+        {
+          "content": "SOURCE: university_it_policies.txt | POLICY: doc-1180\nService Desk Guidance — Vpn\n\nUsers must authenticate to the VPN with their university account. If the VPN client repeatedly fails, the user should record the error message before contacting support. A user should disconnect and reconnect the VPN after changing their university password. The university VPN provides remote access to selected internal services.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0023\nService Desk Guidance — Vpn\n\nIf the VPN client repeatedly fails, the user should record the error message before contacting support. The university VPN provides remote access to selected internal services. Users must authenticate to the VPN with their university account. This guidance applies to routine vpn support requests.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0646\nService Desk Guidance — Vpn\n\nIf the VPN client repeatedly fails, the user should record the error message before contacting support. The university VPN provides remote access to selected internal services.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0785\nService Desk Guidance — Email\n\nUniversity email is accessed with the same university account used by other student services. Mailbox problems should be checked separately from general account-login problems. The IT Service Desk will never ask a user to send their password by email.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "tool",
+          "name": null,
+          "id": "95d4c42e-e26a-48ea-998c-2700d0e87da8",
+          "tool_call_id": "initial_policy_search",
+          "artifact": null,
+          "status": "success"
+        },
+        {
+          "content": "I do not know because it is not specified in the supplied documentation.",
+          "additional_kwargs": {},
+          "response_metadata": {
+            "model": "qwen3:0.6b",
+            "created_at": "2026-10-09T03:53:09.9956068Z",
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 2970077200,
+            "load_duration": 2727573200,
+            "prompt_eval_count": 633,
+            "prompt_eval_duration": 132080000,
+            "eval_count": 15,
+            "eval_duration": 98777000,
+            "logprobs": null,
+            "model_name": "qwen3:0.6b",
+            "model_provider": "ollama"
+          },
+          "type": "ai",
+          "name": null,
+          "id": "lc_run--01a11ecb-10cc-76c2-ba1e-f6b4f48f08c9-0",
+          "tool_calls": [],
+          "invalid_tool_calls": [],
+          "usage_metadata": {
+            "input_tokens": 633,
+            "output_tokens": 15,
+            "total_tokens": 648
+          }
+        }
+      ]
+    },
+    {
+      "mode": "agent",
+      "case": "phone_paraphrase",
+      "question": "Please give me the IT help desk's telephone number.",
+      "answer": "The IT help desk's telephone number is not specified in the provided documentation.",
+      "passed": true,
+      "trace": [
+        {
+          "content": "Please give me the IT help desk's telephone number.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "name": null,
+          "id": "70b1fa66-bf9c-4b9b-bb29-7aeef866ae5f"
+        },
+        {
+          "content": "",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "ai",
+          "name": null,
+          "id": "532b3882-4018-407f-a60f-9edfff6df59d",
+          "tool_calls": [
+            {
+              "name": "search_university_knowledge",
+              "args": {
+                "question": "Please give me the IT help desk's telephone number."
+              },
+              "id": "initial_policy_search",
+              "type": "tool_call"
+            }
+          ],
+          "invalid_tool_calls": [],
+          "usage_metadata": null
+        },
+        {
+          "content": "SOURCE: university_it_policies.txt | POLICY: doc-0365\nService Desk Guidance — Email\n\nThe IT Service Desk will never ask a user to send their password by email. Mailbox problems should be checked separately from general account-login problems. Users should report suspicious messages using the university phishing-report mechanism.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0801\nService Desk Guidance — Email\n\nThe IT Service Desk will never ask a user to send their password by email. Users should report suspicious messages using the university phishing-report mechanism.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0646\nService Desk Guidance — Vpn\n\nIf the VPN client repeatedly fails, the user should record the error message before contacting support. The university VPN provides remote access to selected internal services.\n\nSOURCE: university_it_policies.txt | POLICY: doc-1160\nTechnical Support Memo — Email\n\nThe IT Service Desk will never ask a user to send their password by email. Mailbox problems should be checked separately from general account-login problems. This guidance applies to routine email support requests.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "tool",
+          "name": null,
+          "id": "70615ff6-c9fa-4db9-a47d-36be7e76693a",
+          "tool_call_id": "initial_policy_search",
+          "artifact": null,
+          "status": "success"
+        },
+        {
+          "content": "The IT help desk's telephone number is not specified in the provided documentation.",
+          "additional_kwargs": {},
+          "response_metadata": {
+            "model": "qwen3:0.6b",
+            "created_at": "2026-10-09T03:53:20.7641706Z",
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 5863426400,
+            "load_duration": 4645130000,
+            "prompt_eval_count": 585,
+            "prompt_eval_duration": 184325000,
+            "eval_count": 16,
+            "eval_duration": 122684000,
+            "logprobs": null,
+            "model_name": "qwen3:0.6b",
+            "model_provider": "ollama"
+          },
+          "type": "ai",
+          "name": null,
+          "id": "lc_run--01a11ecb-2f93-7f03-92d6-da3801c4efa5-0",
+          "tool_calls": [],
+          "invalid_tool_calls": [],
+          "usage_metadata": {
+            "input_tokens": 585,
+            "output_tokens": 16,
+            "total_tokens": 601
+          }
+        }
+      ]
+    },
+    {
+      "mode": "agent",
+      "case": "printing",
+      "question": "How long are unreleased print jobs retained?",
+      "answer": "Unreleased print jobs are automatically deleted after 24 hours.",
+      "passed": true,
+      "trace": [
+        {
+          "content": "How long are unreleased print jobs retained?",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "name": null,
+          "id": "ec98e37e-d0b6-4b5a-9c4f-41acd518a325"
+        },
+        {
+          "content": "",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "ai",
+          "name": null,
+          "id": "36b84752-2a88-4e30-b45c-9059e29046f3",
+          "tool_calls": [
+            {
+              "name": "search_university_knowledge",
+              "args": {
+                "question": "How long are unreleased print jobs retained?"
+              },
+              "id": "initial_policy_search",
+              "type": "tool_call"
+            }
+          ],
+          "invalid_tool_calls": [],
+          "usage_metadata": null
+        },
+        {
+          "content": "SOURCE: university_it_policies.txt | POLICY: doc-0041\nSupport Handbook Note — Printing\n\nUnreleased print jobs are automatically deleted after 24 hours. Print jobs are submitted to the university print queue.\n\nSOURCE: university_it_policies.txt | POLICY: doc-1192\nKnowledge-Base Article — Printing\n\nUnreleased print jobs are automatically deleted after 24 hours. A student should check print credit before submitting a large print job.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0645\nSupport Handbook Note — Printing\n\nUnreleased print jobs are automatically deleted after 24 hours. Students release a print job at a printer by authenticating with their student card. If a printer reports a hardware fault, the user should choose another printer and report the fault.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0386\nService Desk Guidance — Printing\n\nUnreleased print jobs are automatically deleted after 24 hours. If a printer reports a hardware fault, the user should choose another printer and report the fault.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "tool",
+          "name": null,
+          "id": "d5164f0e-cfcf-43fa-93d8-adc85877e473",
+          "tool_call_id": "initial_policy_search",
+          "artifact": null,
+          "status": "success"
+        },
+        {
+          "content": "Unreleased print jobs are automatically deleted after 24 hours.",
+          "additional_kwargs": {},
+          "response_metadata": {
+            "model": "qwen3:0.6b",
+            "created_at": "2026-10-09T03:53:33.3871139Z",
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 3855717300,
+            "load_duration": 3569030800,
+            "prompt_eval_count": 574,
+            "prompt_eval_duration": 187243000,
+            "eval_count": 14,
+            "eval_duration": 90108000,
+            "logprobs": null,
+            "model_name": "qwen3:0.6b",
+            "model_provider": "ollama"
+          },
+          "type": "ai",
+          "name": null,
+          "id": "lc_run--01a11ecb-68b9-7dc2-b835-70b1656f571f-0",
+          "tool_calls": [],
+          "invalid_tool_calls": [],
+          "usage_metadata": {
+            "input_tokens": 574,
+            "output_tokens": 14,
+            "total_tokens": 588
+          }
+        }
+      ]
+    },
+    {
+      "mode": "agent",
+      "case": "guest_wifi",
+      "question": "Which Wi-Fi network should visitors use?",
+      "answer": "Campus-Guest is the recommended Wi-Fi network for visitors.",
+      "passed": true,
+      "trace": [
+        {
+          "content": "Which Wi-Fi network should visitors use?",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "human",
+          "name": null,
+          "id": "bd365f4a-75da-42a5-ad0b-2f10315186e5"
+        },
+        {
+          "content": "",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "ai",
+          "name": null,
+          "id": "c9f70afb-3f7e-4e01-b0a0-c65789766d7c",
+          "tool_calls": [
+            {
+              "name": "search_university_knowledge",
+              "args": {
+                "question": "Which Wi-Fi network should visitors use?"
+              },
+              "id": "initial_policy_search",
+              "type": "tool_call"
+            }
+          ],
+          "invalid_tool_calls": [],
+          "usage_metadata": null
+        },
+        {
+          "content": "SOURCE: university_it_policies.txt | POLICY: doc-0068\nService Desk Guidance — Wifi\n\nGuests should use Campus-Guest rather than Campus-Secure. Campus-Secure is the primary wireless network for students and staff.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0258\nSupport Handbook Note — Wifi\n\nCampus-Secure is the primary wireless network for students and staff. Guests should use Campus-Guest rather than Campus-Secure.\n\nSOURCE: university_it_policies.txt | POLICY: doc-0944\nKnowledge-Base Article — Wifi\n\nGuests should use Campus-Guest rather than Campus-Secure. Campus-Secure is the primary wireless network for students and staff. This guidance applies to routine wifi support requests.\n\nSOURCE: university_it_policies.txt | POLICY: doc-1166\nKnowledge-Base Article — Wifi\n\nGuests should use Campus-Guest rather than Campus-Secure. Campus-Secure is the primary wireless network for students and staff. If Wi-Fi service is operational but authentication fails repeatedly, users should check their account status.",
+          "additional_kwargs": {},
+          "response_metadata": {},
+          "type": "tool",
+          "name": null,
+          "id": "0c181bda-25b5-449d-9b24-371be6f2eb50",
+          "tool_call_id": "initial_policy_search",
+          "artifact": null,
+          "status": "success"
+        },
+        {
+          "content": "Campus-Guest is the recommended Wi-Fi network for visitors.",
+          "additional_kwargs": {},
+          "response_metadata": {
+            "model": "qwen3:0.6b",
+            "created_at": "2026-10-09T03:53:40.555007Z",
+            "done": true,
+            "done_reason": "stop",
+            "total_duration": 3101494700,
+            "load_duration": 2851278800,
+            "prompt_eval_count": 575,
+            "prompt_eval_duration": 147180000,
+            "eval_count": 14,
+            "eval_duration": 93268000,
+            "logprobs": null,
+            "model_name": "qwen3:0.6b",
+            "model_provider": "ollama"
+          },
+          "type": "ai",
+          "name": null,
+          "id": "lc_run--01a11ecb-87ac-7712-8f43-934a4d4a6e52-0",
+          "tool_calls": [],
+          "invalid_tool_calls": [],
+          "usage_metadata": {
+            "input_tokens": 575,
+            "output_tokens": 14,
+            "total_tokens": 589
+          }
+        }
+      ]
+    }
+  ],
+  "passed": 8,
+  "total": 8
+}
